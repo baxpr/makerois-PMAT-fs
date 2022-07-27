@@ -33,13 +33,11 @@ subj.png atlas.png \
 -tile 1x2 -trim -quality 100 -background black -gravity center \
 -border 20 -bordercolor black page1.png
 
-info_string="$PROJECT $SUBJECT $SESSION $SCAN"
 ${IMMAGDIR}/convert \
 -size 2600x3365 xc:white \
 -gravity center \( page1.png -resize 2400x \) -composite \
 -gravity North -pointsize 48 -annotate +0+100 \
-"PMAT ROIs in atlas space" \
+"PMAT_fs ROIs in atlas space" \
 -gravity SouthEast -pointsize 48 -annotate +100+100 "$(date)" \
--gravity NorthWest -pointsize 48 -annotate +100+200 "${info_string}" \
-makerois-PMAT.pdf
+makerois-PMAT-fs.pdf
 

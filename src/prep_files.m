@@ -1,28 +1,10 @@
-function [tseg_nii,deffwd_nii,aparc_nii,perirhinalR_nii,perirhinalL_nii,at_nii,pm_nii] = ...
+function [deffwd_nii,aparc_nii,perirhinalR_nii,perirhinalL_nii] = ...
 	prep_files(inp)
-
-% ROIs from container
-copyfile(which('AT_Network_ROIs.nii.gz'), ...
-	fullfile(inp.out_dir,'AT_Network_ROIs.nii.gz'));
-gunzip(fullfile(inp.out_dir,'AT_Network_ROIs.nii.gz'));
-delete(fullfile(inp.out_dir,'AT_Network_ROIs.nii.gz'));
-at_nii = fullfile(inp.out_dir,'AT_Network_ROIs.nii');
-
-copyfile(which('PM_Network_ROIs.nii.gz'), ...
-	fullfile(inp.out_dir,'PM_Network_ROIs.nii.gz'));
-gunzip(fullfile(inp.out_dir,'PM_Network_ROIs.nii.gz'));
-delete(fullfile(inp.out_dir,'PM_Network_ROIs.nii.gz'));
-pm_nii = fullfile(inp.out_dir,'PM_Network_ROIs.nii');
 
 % MNI space deformation field
 copyfile(inp.deffwd_niigz,[inp.out_dir '/y_deffwd.nii.gz']);
 system(['gunzip -f ' inp.out_dir '/y_deffwd.nii.gz']);
 deffwd_nii = [inp.out_dir '/y_deffwd.nii'];
-
-% Temporal lobe
-copyfile(inp.tseg_niigz,[inp.out_dir '/tseg.nii.gz']);
-system(['gunzip -f ' inp.out_dir '/tseg.nii.gz']);
-tseg_nii = [inp.out_dir '/tseg.nii'];
 
 % Freesurfer - need to convert from surface label or mgz to nifti volume
 system([ ...
