@@ -15,8 +15,8 @@ Ylabels = zeros(size(Yaparc));
 
 label_info = readtable('rois-visual-a2009s.csv');
 label_info.Properties.VariableNames = {'Label','Region'};
-label_info.Volume_before_overlap_mm3 = nan(0);
-label_info.Volume_mm3 = nan(0);
+label_info.Volume_before_overlap_mm3(:) = nan;
+label_info.Volume_mm3(:) = nan;
 
 for h = 1:height(label_info)
 	Ylabels(Yaparc(:)==label_info.Label(h)) = label_info.Label(h);
@@ -31,7 +31,7 @@ end
 
 
 %% Done - write label image and info CSV
-Vlabels = Vat;
+Vlabels = Vaparc;
 Vlabels.pinfo(1:2) = [1;0];
 Vlabels.dt(1) = spm_type('uint16');
 roi_nii = fullfile(out_dir,'rois_PMAT_fs.nii');
