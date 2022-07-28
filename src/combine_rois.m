@@ -38,7 +38,7 @@ Vlabels.fname = roi_nii;
 spm_write_vol(Vlabels,Ylabels);
 
 %% Create label info csv
-label_info = info(:,{'Label','Region'});
+label_info = info(:,{'Label','Region','Volume_before_overlap_mm3','Volume_mm3'});
 label_csv = fullfile(out_dir,'rois_PMAT_fs-labels.csv');
 writetable(label_info,label_csv);
 
