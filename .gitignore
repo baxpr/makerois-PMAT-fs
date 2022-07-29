@@ -3,3 +3,6 @@ OUTPUTS
 *.asv
 *~
 .DS_Store
+*.simg
+*.sif
+freesurfer_license.txt
