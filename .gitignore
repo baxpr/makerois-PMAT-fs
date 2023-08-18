@@ -6,3 +6,4 @@ OUTPUTS
 *.simg
 *.sif
 freesurfer_license.txt
+local*
